@@ -33,10 +33,10 @@ public class Ceaser_Coder extends Coder {
 
                 }
                 if(symbol >= 'а' &&  symbol <= 'я') {
-                    symbol = (char)(symbol + (this.shift % this.getRUS_MAX()));
-                    if (symbol > 'я') symbol = (char)('а' + (symbol - 'я') - 1);
-
-                    if(symbol >= 'A' &&  symbol <= 'Z') {
+                    symbol = (char) (symbol + (this.shift % this.getRUS_MAX()));
+                    if (symbol > 'я') symbol = (char) ('а' + (symbol - 'я') - 1);
+                }
+                if(symbol >= 'A' &&  symbol <= 'Z') {
                         symbol = (char)(symbol + (this.shift % this.getENG_MAX()));
                         if (symbol > 'Z') symbol = (char)('A' + (symbol - 'Z') - 1);
 
@@ -46,7 +46,7 @@ public class Ceaser_Coder extends Coder {
                         if (symbol > 'Я') symbol = (char)('А' + (symbol - 'Я') - 1);
 
                     }
-                }
+
 
             }
             code.append(symbol);

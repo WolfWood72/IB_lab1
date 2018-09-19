@@ -10,19 +10,43 @@ import java.util.Map;
 public class Lozung_Coder extends Coder {
 
 
+    public Lozung_Coder()
+    {
+
+    }
+
+
     public Lozung_Coder(String key)
     {
         this.setKey(key);
         MakeLozungAlph(this.getKey());
-        FillDicts(this.getRUS_ALPH().toCharArray(), this.Lozung_RUS_ALPH.toCharArray());
-        FillDicts(this.getENG_ALPH().toCharArray(), this.Lozung_ENG_ALPH.toCharArray());
-        FillDicts(this.getRUS_ALPH().toUpperCase().toCharArray(), this.Lozung_RUS_ALPH.toUpperCase().toCharArray());
-        FillDicts(this.getENG_ALPH().toUpperCase().toCharArray(), this.Lozung_ENG_ALPH.toUpperCase().toCharArray());
+        FillDicts(this.getRUS_ALPH().toLowerCase().toCharArray(), this.Lozung_ALPH.toLowerCase().toCharArray());
+        FillDicts(this.getRUS_ALPH().toUpperCase().toCharArray(), this.Lozung_ALPH.toUpperCase().toCharArray());
     }
 
-    private  String Lozung_RUS_ALPH;
-    private  String Lozung_ENG_ALPH;
+    public Lozung_Coder(String key, String alph)
+    {
+        this.setKey(key);
+        this.setAlph(alph);
+        MakeLozungAlph(this.getKey());
+        FillDicts(alph.toLowerCase().toCharArray(), this.Lozung_ALPH.toLowerCase().toCharArray());
+        FillDicts(alph.toUpperCase().toCharArray(), this.Lozung_ALPH.toUpperCase().toCharArray());
+    }
 
+
+
+    private  String Lozung_ALPH;
+
+
+    public String getAlph() {
+        return alph;
+    }
+
+    public void setAlph(String alph) {
+        this.alph = alph;
+    }
+
+    private String  alph;
     private Map<Character,Character> encode_dict = new HashMap<Character,Character>();
     private Map<Character,Character> decode_dict = new HashMap<Character,Character>();
 
@@ -30,8 +54,7 @@ public class Lozung_Coder extends Coder {
     {
         String DeduplicatedLozung = DropDuplicate(Lozung);
         Integer n = DeduplicatedLozung.length();
-        this.Lozung_RUS_ALPH = DropDuplicate(DeduplicatedLozung + this.getRUS_ALPH().substring(0, this.getRUS_ALPH().length()-n));
-        this.Lozung_ENG_ALPH = DropDuplicate(DeduplicatedLozung + this.getENG_ALPH().substring(0, this.getENG_ALPH().length()-n));
+        this.Lozung_ALPH = DropDuplicate(DeduplicatedLozung + this.getRUS_ALPH().substring(0, this.getRUS_ALPH().length()-n));
     }
 
     private  void FillDicts(char[] Original_Alph, char[] Lozunged_Alph)

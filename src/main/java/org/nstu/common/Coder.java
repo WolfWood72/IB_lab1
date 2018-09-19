@@ -1,6 +1,6 @@
 package org.nstu.common;
 
-public abstract class Coder {
+public  class Coder {
 
     public Coder(){
 
@@ -37,17 +37,17 @@ public abstract class Coder {
 
     private String key;
 
-
-    //https://ru.wikipedia.org/wiki/%D0%A8%D0%B8%D1%84%D1%80_%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8F
-    public String Encode(String message)
-    {
-        return null;
+    public String Encode(String message) {
+        throw new UnsupportedOperationException("Method not implemented");
     }
 
-    public String Decode(String message)
-    {
+    public String Decode(String message) {
+        throw new UnsupportedOperationException("Method not implemented");
+        }
 
-        return null;
+    public String MakeCode(Boolean IsEncode,String messege)
+    {
+        return IsEncode ? this.Encode(messege) : this.Decode(messege);
     }
 
 
